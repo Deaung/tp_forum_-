@@ -10,4 +10,10 @@ export const reqSelectMoim = async (moimId) => await api.get(`/api/moim/${moimId
 
 export const reqJoinMoim = async (moimId) => await api.post(`/api/moim/${moimId}/join`)
 
-export const reqModifyMoim = async (data, moimId) => await api.patch(`/api/moim/${moimId}`, data)
+export const reqRegisterForum = (moimId, formData) => {
+  return api.post(`/api/moims/${moimId}/register`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+};

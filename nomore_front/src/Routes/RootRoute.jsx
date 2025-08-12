@@ -10,7 +10,6 @@ import usePrincipalQuery from '../queries/usePrincipalQuery';
 import SearchPage from '../pages/search/SearchPage';
 import SuggestRoute from './SuggestRoute';
 import CatogoryPage from '../pages/CategoryPage/CatogoryPage';
-import UserManagement from '../pages/UserManagement/UserManagement';
 
 function RootRoute(props) {
 
@@ -29,7 +28,6 @@ function RootRoute(props) {
                 <Route path='/auth/signup' element={ <Signup /> } />
                 <Route path='/mypage' element={ <Mypage /> } />
                 <Route path='/category/*' element={ <CatogoryPage /> } />
-                <Route path='/userManagement' element={ <UserManagement /> } />
                 <Route path='/' element={ <Home />} />
                 <Route path='*' element={ <NotFound /> } /> 
             </Routes>

@@ -7,7 +7,6 @@ export const container = css`
 
 export const header = css`
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
     background-color: #ffffff;
@@ -17,7 +16,7 @@ export const header = css`
     z-index: 100;
 `;
 
-export const click = css`
+export const homeButton = css`
     background: none;
     border: none;
     font-size: 24px;
@@ -36,26 +35,11 @@ export const headerActions = css`
     gap: 8px;
 `;
 
-export const unClick = css`
+export const headerButton = css`
     background: none;
     border: none;
     font-size: 20px;
     cursor: pointer;
-    padding: 8px;
-    color: #666;
-    border-radius: 50%;
-    
-    &:hover {
-        background-color: #f1f3f4;
-    }
-`;
-
-export const Transaction = css`
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    margin-left: 3rem;
     padding: 8px;
     color: #666;
     border-radius: 50%;
@@ -263,3 +247,26 @@ export const joinButton = css`
         transform: translateY(1px);
     }
 `;
+export const inputStyle = {
+  width: '100%',
+  padding: '8px',
+  marginBottom: '10px',
+  fontSize: '1rem',
+};
+
+export const textareaStyle = {
+  width: '100%',
+  height: '100px',
+  padding: '8px',
+  marginBottom: '10px',
+  fontSize: '1rem',
+};
+
+export const submitButton = {
+  padding: '10px 20px',
+  backgroundColor: '#007bff',
+  color: 'white',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+};
