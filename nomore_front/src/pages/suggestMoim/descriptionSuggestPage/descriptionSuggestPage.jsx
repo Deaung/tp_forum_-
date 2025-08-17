@@ -9,7 +9,7 @@ import { RiHome7Fill, RiHome7Line } from 'react-icons/ri';
 import { FaPen, FaRegComment, FaTrashAlt } from 'react-icons/fa';
 import { useQueryClient } from '@tanstack/react-query';
 import { baseURL } from '../../../api/axios.js';
-import { reqUserBlock } from '../../../api/userApi.js';
+import { reqBlockUser } from '../../../api/userApi.js';
 import usePrincipalQuery from '../../../queries/usePrincipalQuery.jsx';
 import useUserBlockListQuery from '../../../queries/useUserBlockListQuery.jsx';
 import useForumQuery from '../../../queries/useForumQuery.jsx';
@@ -127,7 +127,7 @@ function DescriptionSuggestPage(props) {
         }
 
         try {
-            await reqUserBlock(userId);
+            await reqBlockUser(userId);
         } catch(error) {
             console.log('사용자 차단 실패:', error);
         }
@@ -273,8 +273,8 @@ function DescriptionSuggestPage(props) {
                                         <p css={s.forumContent}>{forum.forumContent}</p>
                                     </div>
                                     <div css={s.forumFooter}>
-                                        <p><BiLike /></p>
-                                        <p><FaRegComment /></p>
+                                        <p><BiLike /> {forum.likeCount}</p>
+                                        <p><FaRegComment /> {forum.commentCount}</p>
                                     </div>
                                 </div>
                             );

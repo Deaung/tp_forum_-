@@ -1,6 +1,7 @@
 package com.korit.nomoreback.controller;
 
 import com.korit.nomoreback.domain.forum.Forum;
+import com.korit.nomoreback.domain.forum.ForumComment;
 import com.korit.nomoreback.dto.forum.*;
 import com.korit.nomoreback.security.model.PrincipalUtil;
 import com.korit.nomoreback.service.ForumService;
@@ -31,7 +32,7 @@ public class ForumController {
     }
 
     @GetMapping("/{forumId}")
-    public ResponseEntity<?> getForum(@PathVariable Integer moimId, @PathVariable Integer forumId) {
+    public ResponseEntity<?> getForum(@PathVariable Integer forumId) {
         Forum forum = forumService.getForumById(forumId);
         return ResponseEntity.ok(forum);
     }
@@ -90,6 +91,12 @@ public class ForumController {
     public ResponseEntity<?> getFourumCategories() {
         return ResponseEntity.ok(forumService.getFourumCategories());
     }
+
+    @GetMapping("/{forumId}/comments")
+    public ResponseEntity<List<ForumComment>> getComments(@PathVariable Integer forumId) {
+        List<ForumComment> comments = forumService.getCommentsByForumId(forumId);
+        return ResponseEntity.ok(comments);
+    }
   
     @DeleteMapping("/{moimId}/{forumId}/comment/delete/{forumCommentId}")
     public ResponseEntity<?> deleteComment(@PathVariable Integer moimId,
@@ -99,15 +106,15 @@ public class ForumController {
         return ResponseEntity.ok("댓글 삭제 완료");
     }
 
-    @PostMapping("/{moimId}/{forumId}/like")
-    public ResponseEntity<?> like(@PathVariable Integer moimId,
+    @PostMapping("/{forumId}/like")
+    public ResponseEntity<?> like(
                                   @PathVariable Integer forumId) {
         forumService.like(forumId);
         return ResponseEntity.ok("좋아요");
     }
   
-    @DeleteMapping("/{moimId}/{forumId}/dislike")
-    public ResponseEntity<?> dislike(@PathVariable Integer moimId,
+    @DeleteMapping("/{forumId}/dislike")
+    public ResponseEntity<?> dislike(
                                      @PathVariable Integer forumId) {
         forumService.dislike(forumId);
         return ResponseEntity.ok("좋아요 삭제 요청 완료");

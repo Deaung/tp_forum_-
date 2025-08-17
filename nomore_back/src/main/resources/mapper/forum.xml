@@ -10,6 +10,9 @@
         <result property="forumContent" column="forum_content"/>
         <result property="forumCreatedAt" column="forum_created_at"/>
         <result property="forumUpdatedAt" column="forum_updated_at"/>
+        <result property="likeCount" column="like_count"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="isLike" column="is_like"/>
         <association property="moim" resultMap="moimMap"/>
         <association property="forumCategory" resultMap="forumCategoryMap"/>
         <association property="user" resultMap="userMap"/>
@@ -84,7 +87,7 @@
             f.forum_category_id,
 
             u.user_id,
-            u.username,
+            u.nick_name,
             u.profile_img_path,
 
             fi.forum_img_id,
@@ -92,10 +95,10 @@
             fi.path,
 
             fc.forum_category_id,
-            fc.category_name,
+            fc.forum_category_name,
 
             ifnull(flc.like_count, 0) as like_count,
-            ifnull(flt.id, 0) as is_like
+            ifnull(flt.forum_like_id, 0) as is_like
 
         from forum_tb f
             join user_tb u on u.user_id = f.user_id

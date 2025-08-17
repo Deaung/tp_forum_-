@@ -126,6 +126,12 @@ public class ForumService {
         return forumCommentMapper.getCountByForumId(dto.getForumId());
     }
 
+    public List<ForumComment> getCommentsByForumId(Integer forumId) {
+
+        return forumCommentMapper.findAllByForumId(forumId);
+
+    }
+
     public void modifyComment (ForumCommentModifyDto modifyDto,Integer forumId) {
         List<ForumComment> forumCommentList = forumCommentMapper.findAllByForumId(forumId);
         Integer userId = principalUtil.getPrincipalUser().getUser().getUserId();

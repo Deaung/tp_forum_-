@@ -6,3 +6,4 @@ export const reqBlockUser = async (userId) => api.put(`/api/user/siteBlockUser?u
 
 export const reqUnBlockUser = async (userId) => api.put(`/api/user/siteUnBlockUser?userId=${userId}`);
 
+console.log("userApi loaded", { reqBlockUser });
